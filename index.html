@@ -339,7 +339,7 @@ code{background:var(--g800);padding:2px 6px;border-radius:6px;color:var(--white)
           </ul>
         </div>
         <a class="btn btn--solid" id="dlBtn" href="#get" role="button">Download current version</a>
-        <div id="dlModelWrap" style="margin-top:14px"><a class="btn btn--ghost" id="dlModelBtn" onclick="event.preventDefault();window.fidexDownload&&window.fidexDownload('model');" href="#get">Download AI model (2 parts + instructions)</a><p class="dl__meta">Separate download. Keep both model parts (.001 and .002) together in your Downloads folder.</p></div>
+        <div id="dlModelWrap" style="margin-top:14px"><a class="btn btn--ghost" id="dlModelBtn" onclick="event.preventDefault();window.fidexDownload&&window.fidexDownload('model');" href="#get">Download Qwen 3.5 4B model only (2 parts + instructions)</a><p class="dl__meta">Separate download. Keep both model parts (.001 and .002) together in your Downloads folder.</p></div>
       </div>
       <div class="dl__feat" id="dlFeat" aria-live="polite"></div>
     </div>
@@ -347,16 +347,23 @@ code{background:var(--g800);padding:2px 6px;border-radius:6px;color:var(--white)
   </div>
 </div></section></div>
 
+<style>
+.stp{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:14px;max-width:760px;counter-reset:s}
+.stp li{counter-increment:s;position:relative;padding:16px 18px 16px 70px;border:1px solid rgba(255,255,255,.14);border-radius:14px;background:rgba(255,255,255,.04);line-height:1.55}
+.stp li::before{content:counter(s);position:absolute;left:18px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:#fff;color:#000;font-weight:700;display:flex;align-items:center;justify-content:center}
+.stp b{display:block;font-size:1.02rem;margin-bottom:2px}.stp span{opacity:.8;font-size:.92rem}.stp code{background:rgba(255,255,255,.1);padding:1px 6px;border-radius:5px}
+</style>
 <div class="band"><section class="section" id="install"><div class="wrap">
 <p class="eyebrow">Installation</p><h2>Installation Steps</h2>
-<ol class="steps" style="margin:18px 0 0;padding-left:22px;line-height:1.8;max-width:720px">
-<li><b>Download the installer.</b> Click <b>Download</b> above to get <code>FIDEX-SI-Setup.exe</code>.</li>
-<li><b>Open the installer.</b> Double-click <code>FIDEX-SI-Setup.exe</code> in your Downloads folder. If Windows SmartScreen appears, click <i>More info</i>, then <i>Run anyway</i>.</li>
-<li><b>Follow the prompts.</b> Choose where to install (the default is fine) and click Install. Desktop and Start Menu shortcuts are created for you.</li>
-<li><b>Launch FIDEX SI.</b> Double-click the <b>FIDEX SI</b> icon on your Desktop, or open it from the Start Menu.</li>
-<li><b>Install the AI model (if required).</b> If FIDEX SI says the AI model is missing, use <b>Download AI model</b> above. Keep both parts (<code>.zip.001</code> and <code>.zip.002</code>) together in your Downloads folder, then restart FIDEX SI. It joins and installs the model automatically.</li>
+<p class="dl__sub">It takes about two minutes. No Node.js, Python or commands needed.</p>
+<ol class="stp">
+<li><b>Click Download</b><span>Three files download: the two AI model parts (<code>.001</code> and <code>.002</code>) and then <code>FIDEX-SI-Setup.exe</code>. If your browser asks, choose <i>Allow</i> for multiple downloads.</span></li>
+<li><b>Open your Downloads folder</b><span>Keep all three files together in the same folder. Don't rename or move the model parts.</span></li>
+<li><b>Double-click FIDEX-SI-Setup.exe</b><span>If Windows asks for permission or shows a SmartScreen warning, click <i>More info</i>, then <i>Run anyway</i> (or <i>Yes</i>).</span></li>
+<li><b>Let it install</b><span>Follow the prompts and click Install. FIDEX SI installs itself, <b>creates an icon on your Desktop</b> and adds a Start Menu shortcut.</span></li>
+<li><b>FIDEX SI launches</b><span>It opens automatically when the install finishes. Next time, just double-click the <b>FIDEX SI</b> icon on your Desktop. On first launch it finds the model parts in Downloads and sets up the AI model by itself.</span></li>
 </ol>
-<p class="dl__meta">Direct links: <a href="https://github.com/devfidelis001/Fidex-V1/releases/download/v1.0.0/FIDEX-SI-Setup.exe" download>FIDEX-SI-Setup.exe</a> · <a href="https://github.com/devfidelis001/Fidex-V1/releases/download/v1.0.0/FIDEX-SI-Model-qwen3.5-4b.zip.001" download>model part 1</a> · <a href="https://github.com/devfidelis001/Fidex-V1/releases/download/v1.0.0/FIDEX-SI-Model-qwen3.5-4b.zip.002" download>model part 2</a> · <a href="https://github.com/devfidelis001/Fidex-V1/releases/download/v1.0.0/MODEL-INSTALL-INSTRUCTIONS.txt" download>instructions</a></p>
+<p class="dl__meta">Browser blocked a file? Use the direct links: <a href="https://github.com/devfidelis001/Fidex-V1/releases/download/v1.0.0/FIDEX-SI-Model-qwen3.5-4b.zip.001" download>model part 1</a> · <a href="https://github.com/devfidelis001/Fidex-V1/releases/download/v1.0.0/FIDEX-SI-Model-qwen3.5-4b.zip.002" download>model part 2</a> · <a href="https://github.com/devfidelis001/Fidex-V1/releases/download/v1.0.0/FIDEX-SI-Setup.exe" download>FIDEX-SI-Setup.exe</a> · <a href="https://github.com/devfidelis001/Fidex-V1/releases/download/v1.0.0/MODEL-INSTALL-INSTRUCTIONS.txt" download>instructions</a></p>
 </div></section></div>
 
 <div class="band band--alt"><section class="section" id="about"><div class="wrap about">
@@ -528,7 +535,7 @@ b.addEventListener('click',function(){var o=m.hidden;m.hidden=!o;b.textContent=o
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 /* CONFIG: the Download buttons start direct downloads of the release files (no GitHub page). */
-var FIDEX_CONFIG = { downloadUrl: "#get", version: "1", installer: ["FIDEX-SI-Setup.exe"], model: ["FIDEX-SI-Model-qwen3.5-4b.zip.001", "FIDEX-SI-Model-qwen3.5-4b.zip.002", "MODEL-INSTALL-INSTRUCTIONS.txt"], files: ["FIDEX-SI-Setup.exe", "FIDEX-SI-Model-qwen3.5-4b.zip.001", "FIDEX-SI-Model-qwen3.5-4b.zip.002", "MODEL-INSTALL-INSTRUCTIONS.txt"], base: "https://github.com/devfidelis001/Fidex-V1/releases/download/v1.0.0/" };
+var FIDEX_CONFIG = { downloadUrl: "#get", version: "1", installer: ["FIDEX-SI-Model-qwen3.5-4b.zip.001", "FIDEX-SI-Model-qwen3.5-4b.zip.002", "FIDEX-SI-Setup.exe"], model: ["FIDEX-SI-Model-qwen3.5-4b.zip.001", "FIDEX-SI-Model-qwen3.5-4b.zip.002", "MODEL-INSTALL-INSTRUCTIONS.txt"], files: ["FIDEX-SI-Setup.exe", "FIDEX-SI-Model-qwen3.5-4b.zip.001", "FIDEX-SI-Model-qwen3.5-4b.zip.002", "MODEL-INSTALL-INSTRUCTIONS.txt"], base: "https://github.com/devfidelis001/Fidex-V1/releases/download/v1.0.0/" };
 
 (function () {
   "use strict";
@@ -699,7 +706,7 @@ var FIDEX_CONFIG = { downloadUrl: "#get", version: "1", installer: ["FIDEX-SI-Se
     if (v === "1" && cfg.downloadUrl) {
       btn.removeAttribute("aria-disabled"); btn.textContent = "Download current version";
       btn.href = "#get"; btn.removeAttribute("target");
-      meta.textContent = "Windows installer (.exe) · Version " + (cfg.version || "1") + " · Free";
+      meta.textContent = "Installer + AI model · Version " + (cfg.version || "1") + " · Free";
     } else {
       btn.setAttribute("aria-disabled", "true"); btn.removeAttribute("target"); btn.href = "#get";
       btn.textContent = v === "1" ? "Download coming soon" : "Version 2 coming soon";
@@ -742,16 +749,16 @@ var FIDEX_CONFIG = { downloadUrl: "#get", version: "1", installer: ["FIDEX-SI-Se
 <script>
 (function(){
   var cfg=FIDEX_CONFIG, panel=document.getElementById("dlPanel"), busy=false;
-  var MSG={installer:["Downloading FIDEX-SI-Setup.exe","When it finishes, open it from your Downloads folder and follow the Installation Steps below. Then, if FIDEX SI asks for the AI model, download it from the model button (separate download)."],
+  var MSG={installer:["Your FIDEX SI download is starting","3 files will download: the two AI model parts (.001 and .002), then the installer FIDEX-SI-Setup.exe last. If your browser asks, choose Allow for multiple downloads. Keep all three files together in your Downloads folder, then open FIDEX-SI-Setup.exe and follow the Installation Steps below."],
            model:["Downloading the AI model","If your browser asks, choose Allow for multiple downloads. 3 files download: model part .001, part .002 and the instructions. Keep both model parts together in your Downloads folder, then start FIDEX SI; it installs the model by itself."]};
   document.getElementById("dlPanelX").addEventListener("click",function(){panel.hidden=true;});
   function fire(url,name){var a=document.createElement("a");a.href=url;a.setAttribute("download",name);a.rel="noopener";a.style.display="none";document.body.appendChild(a);a.click();setTimeout(function(){a.remove();},4000);}
   window.fidexDownload=function(kind){
     kind=(kind==="model")?"model":"installer"; var list=cfg[kind];
     document.getElementById("dlTitle").textContent=MSG[kind][0]; document.getElementById("dlMsg").textContent=MSG[kind][1];
-    document.getElementById("dlLinks").innerHTML=list.map(function(f){return '<li><a href="'+cfg.base+f+'" download rel="noopener">'+f+'</a></li>';}).join("");
+    document.getElementById("dlLinks").innerHTML=list.map(function(f){return '<li><a href="'+cfg.base+f+'" download rel="noopener">'+f+'</a></li>';}).join("")+(kind==="installer"?'<li><a href="'+cfg.base+'MODEL-INSTALL-INSTRUCTIONS.txt" download rel="noopener">MODEL-INSTALL-INSTRUCTIONS.txt</a></li>':"");
     panel.hidden=false; if(busy) return; busy=true;
-    list.forEach(function(f,i){setTimeout(function(){fire(cfg.base+f,f); if(i===list.length-1) busy=false;},i*1200);});
+    list.forEach(function(f,i){setTimeout(function(){fire(cfg.base+f,f); if(i===list.length-1) busy=false;},i*2500);});
   };
 })();
 </script>
